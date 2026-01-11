@@ -69,7 +69,7 @@ const App = {
 
             // Re-enable button
             leverBtn.disabled = false;
-            leverBtn.querySelector('.lever-text').textContent = 'PULL TO GENERATE';
+            leverBtn.querySelector('.lever-text').textContent = 'PUSH TO GENERATE';
         });
     },
 
