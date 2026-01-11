@@ -1,0 +1,11 @@
+{
+  "name": "rand-agi",
+  "version": "1.0.0",
+  "description": "AI Slot Machine - Random Neural Network Generator",
+  "scripts": {
+    "start": "npx serve -s . -l $PORT"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
