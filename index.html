@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAND.AGI - The AI Slot Machine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="casino-bg"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="neon-text">RAND</span><span class="dot">.</span><span class="neon-text-alt">AGI</span>
+            </h1>
+            <p class="subtitle">Infinite Monkeys. Infinite Weights. Maybe AGI?</p>
+        </header>
+
+        <div class="slot-machine">
+            <div class="machine-frame">
+                <div class="machine-top">
+                    <div class="lights">
+                        <span class="light"></span>
+                        <span class="light"></span>
+                        <span class="light"></span>
+                        <span class="light"></span>
+                        <span class="light"></span>
+                    </div>
+                </div>
+
+                <div class="reels-container">
+                    <div class="reel" id="reel-arch">
+                        <div class="reel-window">
+                            <div class="reel-strip">
+                                <div class="reel-item">MLP</div>
+                                <div class="reel-item">CNN</div>
+                                <div class="reel-item">RNN</div>
+                                <div class="reel-item">TRANSFORMER</div>
+                                <div class="reel-item">GAN</div>
+                                <div class="reel-item">VAE</div>
+                                <div class="reel-item">DIFFUSION</div>
+                                <div class="reel-item">???</div>
+                            </div>
+                        </div>
+                        <div class="reel-label">ARCHITECTURE</div>
+                    </div>
+
+                    <div class="reel" id="reel-layers">
+                        <div class="reel-window">
+                            <div class="reel-strip">
+                                <div class="reel-item">1</div>
+                                <div class="reel-item">3</div>
+                                <div class="reel-item">12</div>
+                                <div class="reel-item">24</div>
+                                <div class="reel-item">48</div>
+                                <div class="reel-item">96</div>
+                                <div class="reel-item">128</div>
+                                <div class="reel-item">1000+</div>
+                            </div>
+                        </div>
+                        <div class="reel-label">LAYERS</div>
+                    </div>
+
+                    <div class="reel" id="reel-params">
+                        <div class="reel-window">
+                            <div class="reel-strip">
+                                <div class="reel-item">1K</div>
+                                <div class="reel-item">100K</div>
+                                <div class="reel-item">1M</div>
+                                <div class="reel-item">100M</div>
+                                <div class="reel-item">1B</div>
+                                <div class="reel-item">7B</div>
+                                <div class="reel-item">70B</div>
+                                <div class="reel-item">1T+</div>
+                            </div>
+                        </div>
+                        <div class="reel-label">PARAMETERS</div>
+                    </div>
+                </div>
+
+                <div class="lever-section">
+                    <button class="lever-btn" id="pull-lever">
+                        <span class="lever-text">PULL TO GENERATE</span>
+                        <div class="lever-handle"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-panel" id="result-panel">
+            <div class="model-info">
+                <h2 class="model-name" id="model-name">-- AWAITING GENERATION --</h2>
+                <div class="model-stats">
+                    <div class="stat">
+                        <span class="stat-label">Architecture</span>
+                        <span class="stat-value" id="stat-arch">-</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Layers</span>
+                        <span class="stat-value" id="stat-layers">-</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Parameters</span>
+                        <span class="stat-value" id="stat-params">-</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Activations</span>
+                        <span class="stat-value" id="stat-activations">-</span>
+                    </div>
+                </div>
+
+                <div class="agi-probability">
+                    <span class="prob-label">Probability this is AGI:</span>
+                    <span class="prob-value" id="agi-prob">1 in ???</span>
+                </div>
+
+                <div class="download-section" id="download-section" style="display: none;">
+                    <button class="download-btn" id="download-model">
+                        <span class="btn-icon">ZIP</span>
+                        Download Model
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="global-stat">
+                <span class="gs-label">Your Generations:</span>
+                <span class="gs-value" id="local-count">0</span>
+            </div>
+            <div class="global-stat">
+                <span class="gs-label">Total Weights Generated:</span>
+                <span class="gs-value" id="total-weights">0</span>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Based on the Infinite Monkey Theorem: Given infinite random neural networks, one might be AGI.</p>
+            <p class="disclaimer">Spoiler: It probably won't be this one.</p>
+        </footer>
+    </div>
+
+    <div class="confetti-container" id="confetti"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

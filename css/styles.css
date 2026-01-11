@@ -1,0 +1,513 @@
+/* ============================================
+   RAND.AGI - AI Slot Machine Styles
+   Retro Vegas Casino Theme
+   ============================================ */
+
+:root {
+    --neon-pink: #ff2d95;
+    --neon-blue: #00f3ff;
+    --neon-green: #39ff14;
+    --neon-yellow: #fff01f;
+    --neon-purple: #bf00ff;
+    --gold: #ffd700;
+    --dark-bg: #0a0a0f;
+    --darker-bg: #050508;
+    --machine-color: #1a1a2e;
+    --machine-border: #2d2d4a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: var(--dark-bg);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Background effects */
+.casino-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 45, 149, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(0, 243, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 80%, rgba(191, 0, 255, 0.1) 0%, transparent 40%),
+        var(--dark-bg);
+    z-index: -1;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+}
+
+.neon-text {
+    color: var(--neon-pink);
+    text-shadow:
+        0 0 5px var(--neon-pink),
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink),
+        0 0 40px var(--neon-pink);
+    animation: flicker 3s infinite alternate;
+}
+
+.neon-text-alt {
+    color: var(--neon-blue);
+    text-shadow:
+        0 0 5px var(--neon-blue),
+        0 0 10px var(--neon-blue),
+        0 0 20px var(--neon-blue),
+        0 0 40px var(--neon-blue);
+    animation: flicker 2.5s infinite alternate;
+}
+
+.dot {
+    color: var(--neon-green);
+    text-shadow:
+        0 0 5px var(--neon-green),
+        0 0 10px var(--neon-green),
+        0 0 20px var(--neon-green);
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.8;
+    }
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #888;
+    letter-spacing: 2px;
+}
+
+/* Slot Machine */
+.slot-machine {
+    perspective: 1000px;
+    margin-bottom: 30px;
+}
+
+.machine-frame {
+    background: linear-gradient(145deg, #2a2a4a, #1a1a2e);
+    border: 4px solid var(--machine-border);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow:
+        0 0 30px rgba(255, 45, 149, 0.3),
+        0 0 60px rgba(0, 243, 255, 0.2),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.machine-top {
+    margin-bottom: 20px;
+}
+
+.lights {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.light {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--neon-yellow);
+    box-shadow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-yellow);
+    animation: blink 0.5s infinite alternate;
+}
+
+.light:nth-child(2) { animation-delay: 0.1s; background: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink); }
+.light:nth-child(3) { animation-delay: 0.2s; background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
+.light:nth-child(4) { animation-delay: 0.3s; background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green); }
+.light:nth-child(5) { animation-delay: 0.4s; background: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
+
+@keyframes blink {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Reels */
+.reels-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.reel {
+    text-align: center;
+}
+
+.reel-window {
+    width: 180px;
+    height: 80px;
+    background: var(--darker-bg);
+    border: 3px solid var(--gold);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.reel-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.1s ease-out;
+}
+
+.reel-item {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+}
+
+.reel-label {
+    margin-top: 10px;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+/* Lever Button */
+.lever-section {
+    display: flex;
+    justify-content: center;
+}
+
+.lever-btn {
+    background: linear-gradient(180deg, #ff4444, #cc0000);
+    border: none;
+    border-radius: 15px;
+    padding: 20px 50px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow:
+        0 6px 0 #990000,
+        0 8px 20px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 0, 0, 0.3);
+    transition: all 0.1s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.lever-btn:hover {
+    background: linear-gradient(180deg, #ff6666, #ee0000);
+    box-shadow:
+        0 6px 0 #990000,
+        0 8px 20px rgba(0, 0, 0, 0.5),
+        0 0 50px rgba(255, 0, 0, 0.5);
+}
+
+.lever-btn:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 2px 0 #990000,
+        0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.lever-btn:disabled {
+    background: linear-gradient(180deg, #666, #444);
+    box-shadow: 0 6px 0 #333;
+    cursor: not-allowed;
+}
+
+.lever-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.lever-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* Result Panel */
+.result-panel {
+    background: linear-gradient(145deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 35, 0.9));
+    border: 2px solid var(--machine-border);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.model-name {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: var(--neon-blue);
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--neon-blue);
+    word-break: break-all;
+}
+
+.model-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--machine-border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.65rem;
+    color: #666;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1rem;
+    color: var(--neon-green);
+    font-weight: 700;
+}
+
+/* AGI Probability */
+.agi-probability {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 45, 149, 0.1);
+    border: 1px solid var(--neon-pink);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.prob-label {
+    display: block;
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.prob-value {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
+}
+
+/* Download Buttons */
+.download-section {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.download-btn {
+    background: linear-gradient(180deg, #2a4a2a, #1a3a1a);
+    border: 2px solid var(--neon-green);
+    border-radius: 10px;
+    padding: 15px 25px;
+    color: var(--neon-green);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.download-btn:hover {
+    background: linear-gradient(180deg, #3a5a3a, #2a4a2a);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Stats Bar */
+.stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.global-stat {
+    text-align: center;
+}
+
+.gs-label {
+    font-size: 0.65rem;
+    color: #666;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.gs-value {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: var(--gold);
+    text-shadow: 0 0 5px var(--gold);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #444;
+    font-size: 0.75rem;
+}
+
+.disclaimer {
+    margin-top: 10px;
+    font-style: italic;
+    color: #333;
+}
+
+/* Confetti */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+}
+
+/* Spinning animation for reels */
+.reel.spinning .reel-strip {
+    animation: spin 0.1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: translateY(0); }
+    to { transform: translateY(-80px); }
+}
+
+/* Jackpot animation */
+.jackpot .machine-frame {
+    animation: jackpot-glow 0.5s ease infinite alternate;
+}
+
+@keyframes jackpot-glow {
+    from {
+        box-shadow:
+            0 0 30px rgba(255, 215, 0, 0.5),
+            0 0 60px rgba(255, 215, 0, 0.3),
+            inset 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+    to {
+        box-shadow:
+            0 0 50px rgba(255, 215, 0, 0.8),
+            0 0 100px rgba(255, 215, 0, 0.5),
+            inset 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .reels-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reel-window {
+        width: 200px;
+    }
+
+    .model-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .download-section {
+        flex-direction: column;
+    }
+
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
