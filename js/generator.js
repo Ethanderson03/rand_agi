@@ -348,7 +348,7 @@ const NetworkGenerator = {
 
     // Generate a fun model name
     generateModelName(architecture) {
-        const prefixes = ['GPT', 'Claude', 'Llama', 'Gemini', 'Mistral', 'Falcon', 'Phi', 'Qwen', 'DeepSeek', 'BLOOM', 'OPT', 'Grok', 'Orca'];
+        const prefixes = ['RAND', 'MONKE', 'LUCKY', 'CHAOS', 'YOLO', 'MAGIC', 'DICE', 'SLOT', 'JACKPOT', 'SPIN', 'WILD', 'GLITCH', 'FUZZY'];
         const suffixes = ['Random', 'Chaos', 'Monkey', 'Lucky', 'Quantum', 'Ultra', 'Mega', 'Hyper', 'Neo', 'Prime', 'Zero', 'Omega'];
         const versions = ['0.1', '1.0', '2.0', '3.5', '4.0', '7', '13', '70', '405'];
 

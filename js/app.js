@@ -46,8 +46,9 @@ const App = {
         leverBtn.disabled = true;
         leverBtn.querySelector('.lever-text').textContent = 'GENERATING...';
 
-        // Hide download section during generation
+        // Hide download section and retract ticket during generation
         document.getElementById('download-section').style.display = 'none';
+        document.getElementById('prize-ticket').classList.remove('revealed');
 
         // Generate the network FIRST so we know what to display
         this.currentArchitecture = NetworkGenerator.generateArchitecture();
@@ -76,6 +77,9 @@ const App = {
         // Update UI
         this.updateResultPanel();
 
+        // Reveal the prize ticket
+        this.revealPrizeTicket();
+
         // Update stats
         this.stats.localGenerations++;
         this.stats.totalWeightsGenerated += this.currentWeights.actualParams;
@@ -97,11 +101,21 @@ const App = {
         document.getElementById('download-section').style.display = 'flex';
     },
 
+    revealPrizeTicket() {
+        const ticket = document.getElementById('prize-ticket');
+        const ticketName = document.getElementById('ticket-name');
+        const ticketParams = document.getElementById('ticket-params');
+
+        // Set the content
+        ticketName.textContent = this.modelName;
+        ticketParams.textContent = `${NetworkGenerator.formatParams(this.currentArchitecture.total_parameters)} parameters`;
+
+        // Reveal with animation
+        ticket.classList.add('revealed');
+    },
+
     updateResultPanel() {
         const arch = this.currentArchitecture;
-
-        // Model name
-        document.getElementById('model-name').textContent = this.modelName;
 
         // Stats
         document.getElementById('stat-arch').textContent = arch.architecture_name;
